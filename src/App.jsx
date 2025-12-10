@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect, useRef } from "react";
 import {
   Github,
   Linkedin,
@@ -12,7 +12,29 @@ import {
 function App() {
   const [activeSection, setActiveSection] = useState("home");
   const [isScrolled, setIsScrolled] = useState(false);
-  it;
+  console.log('Current section:', activeSection);
+
+
+  const homeRef = useRef(null);
+  const aboutRef = useRef(null);
+  const projectsRef = useRef(null);
+  const skillsRef = useRef(null);
+  const contactRef = useRef(null);
+
+  const   navBarBackgroundColors = {
+    home:'bg-stone-500',
+    about: 'bg-stone-100',
+    projects: 'bg-stone-800',
+    skills: 'bg-blue-500',
+  }
+
+  const   navBarTextColors = {
+    home:'bg-stone-200',
+    about: 'bg-stone-800',
+    projects: 'bg-stone-800',
+    skills: 'bg-stone-500',
+  }
+
   useEffect(() => {
     const handleScroll = () => {
       setIsScrolled(window.scrollY > 50);
@@ -21,6 +43,33 @@ function App() {
     return () => window.removeEventListener("scroll", handleScroll);
   }, []);
 
+  useEffect(() => {
+    const handleSectionChange = () => {
+      const scrollPosition = window.scrollY;  // Fixed typo
+      const navbarHeight = 80;
+      
+      if (scrollPosition < aboutRef.current.offsetTop - navbarHeight) {
+        setActiveSection('home');
+      }
+      else if (scrollPosition < projectsRef.current.offsetTop - navbarHeight) {
+        setActiveSection('about');
+      }
+      else if (scrollPosition < skillsRef.current.offsetTop - navbarHeight) {
+        setActiveSection("projects");
+      }
+      else {  // Fixed typo
+        setActiveSection("skills");
+      }
+
+    };
+    
+    window.addEventListener('scroll', handleSectionChange);
+    
+    handleSectionChange();
+    
+    return () => window.removeEventListener('scroll', handleSectionChange);
+  }, []); 
+  
   const projects = [
     {
       title: "Unity Farming Simulator",
@@ -34,7 +83,7 @@ function App() {
         "Inventory management",
       ],
       link: "#",
-      github: "https://github.com/yourusername/farming-sim",
+      github: "https://github.com/WJSchratt/farming-sim",
     },
     {
       title: "Full-Stack Web Application",
@@ -63,13 +112,9 @@ function App() {
 
   return (
     <div className="min-h-screen bg-stone-900 text-stone-100">
-      {/* Navigation */}
       <nav
-        className={`fixed w-full z-50 transition-all duration-300 ${
-          isScrolled
-            ? "bg-stone-50/95 backdrop-blur-sm shadow-sm"
-            : "bg-stone-500"
-        }`}
+        className={`fixed w-full z-50 transition-all duration-300 ${navBarBackgroundColors[activeSection]}
+        `}
       >
         <div className="max-w-6xl mx-auto px-6 py-4">
           <div className="flex justify-between items-center">
@@ -92,14 +137,13 @@ function App() {
         </div>
       </nav>
 
-      {/* Hero Section */}
       <section
         id="home"
-        className="min-h-screen ref={homeRef} flex items-center pt-20 pb-32 px-6"
+        ref={homeRef}
+        className="min-h-screen flex items-center pt-20 pb-32 px-6"
       >
         <div className="max-w-6xl mx-auto w-full">
           <div className="space-y-6">
-            <div className="inline-block"></div>
             <h1 className="text-7xl font-bold leading-tight tracking-tight">
               Full-Stack Developer
               <br />
@@ -108,11 +152,11 @@ function App() {
 
             <p className="text-xl font-bold text-stone-100 max-w-2xl leading-relaxed">
               Building dynamic web applications and interactive game
-              experiences.{" "}
+              experiences.
             </p>
             <p className="text-xl font-bold text-sky-600 max-w-2xl leading-relaxed">
-              I work with Front-end(React, JavaScript, Tailwind CSS) back-end
-              (Node.js, Python, RESTful APIs).
+              I work with Front-end (React, JavaScript, Tailwind CSS) and
+              Back-end (Node.js, Python, RESTful APIs).
             </p>
 
             <div className="flex gap-4 pt-4">
@@ -124,7 +168,7 @@ function App() {
               </a>
               <a
                 href="#contact"
-                className="border-2 border-stone-900 text-stone-900 px-8 py-4 rounded-lg font-medium hover:bg-stone-900 hover:text-white transition-all"
+                className="border-2 border-stone-100 text-stone-100 px-8 py-4 rounded-lg font-medium hover:bg-stone-100 hover:text-stone-900 transition-all"
               >
                 Get in Touch
               </a>
@@ -158,27 +202,26 @@ function App() {
         </div>
       </section>
 
-      {/* About Section */}
-      <section id="about" className=" ref={aboutRef} py-32 px-6 bg-stone-600">
+      <section id="about" ref={aboutRef} className="py-32 px-6 bg-stone-600">
         <div className="max-w-6xl mx-auto">
           <div className="grid md:grid-cols-2 gap-16 items-center">
             <div>
               <h2 className="text-5xl font-bold text-stone-900 mb-6">
                 About Me
               </h2>
-              <div className="space-y-4 text-stone-100 leading-relaxed">
-                <p>
+              <div className="space-y-4 leading-relaxed">
+                <p className="text-stone-100">
                   I'm a full-stack developer with a passion for creating
-                  engaging digital experiences. I have a A.S. in Programming and
-                  Analysis and I am currently pursuing my Bachelors.
+                  engaging digital experiences. I have an A.S. in Programming
+                  and Analysis and I am currently pursuing my Bachelors.
                 </p>
-                <p className="space-y4-1 text-stone-900 font-bold">
+                <p className="text-stone-900 font-bold">
                   I love coding and problem solving but I love people even more.
                   I like to engage, connect and solve problems together. I come
-                  from a customer/sevice and sales background, so I understand
+                  from a customer service and sales background, so I understand
                   how to identify client needs and build relationships.
                 </p>
-                <p>
+                <p className="text-stone-100">
                   I grew up in Germany and I am fluent in both English and
                   German. I have work experience in Germany and the USA. I love
                   both countries for many reasons and my dream is to collaborate
@@ -195,7 +238,7 @@ function App() {
                   </p>
                 </div>
                 <div className="space-y-2">
-                  <Globe className="w-8 h-8 text-stone-900 " />
+                  <Globe className="w-8 h-8 text-stone-900" />
                   <h3 className="font-bold">Bilingual</h3>
                   <p className="text-sm text-stone-900 font-bold">
                     German & English
@@ -222,7 +265,6 @@ function App() {
                     <p className="text-sm text-stone-100">
                       A.S. Programming and Analysis
                     </p>
-                    <p className="text-sm text-stone-100"></p>
                   </div>
                   <div>
                     <h3 className="text-sm font-bold text-stone-500 mb-2">
@@ -247,14 +289,16 @@ function App() {
         </div>
       </section>
 
-      {/* Projects Section */}
       <section
         id="projects"
-        className=" ref={projectsRef} py-32 px-6 bg-stone-50"
+        ref={projectsRef}
+        className="py-32 px-6 bg-stone-50"
       >
         <div className="max-w-6xl mx-auto">
-          <h2 className="text-5xl font-bold mb-4">Featured Projects</h2>
-          <p className="text-stone-100 mb-16 text-lg">
+          <h2 className="text-5xl font-bold mb-4 text-stone-900">
+            Featured Projects
+          </h2>
+          <p className="text-stone-600 mb-16 text-lg">
             A selection of my recent work in web and game development
           </p>
 
@@ -266,8 +310,10 @@ function App() {
               >
                 <div className="grid md:grid-cols-5 gap-8 p-8">
                   <div className="md:col-span-3 space-y-4">
-                    <h3 className="text-3xl font-bold">{project.title}</h3>
-                    <p className="text-stone-100 leading-relaxed">
+                    <h3 className="text-3xl font-bold text-stone-900">
+                      {project.title}
+                    </h3>
+                    <p className="text-stone-600 leading-relaxed">
                       {project.description}
                     </p>
 
@@ -279,7 +325,7 @@ function App() {
                         {project.features.map((feature, i) => (
                           <li
                             key={i}
-                            className="flex items-start gap-2 text-sm text-stone-100"
+                            className="flex items-start gap-2 text-sm text-stone-600"
                           >
                             <span className="text-sky-600 mt-1">▸</span>
                             {feature}
@@ -330,11 +376,12 @@ function App() {
         </div>
       </section>
 
-      {/* Skills Section */}
-      <section id="skills" className=" ref= {skillsRef} py-32 px-6 bg-white">
+      <section id="skills" ref={skillsRef} className="py-32 px-6 bg-white">
         <div className="max-w-6xl mx-auto">
-          <h2 className="text-5xl font-bold mb-4">Skills & Technologies</h2>
-          <p className="text-stone-100 mb-16 text-lg">
+          <h2 className="text-5xl font-bold mb-4 text-stone-900">
+            Skills & Technologies
+          </h2>
+          <p className="text-stone-600 mb-16 text-lg">
             Tools and technologies I work with
           </p>
 
@@ -346,7 +393,7 @@ function App() {
                   {items.map((skill, i) => (
                     <li
                       key={i}
-                      className="text-stone-100 flex items-center gap-2"
+                      className="text-stone-600 flex items-center gap-2"
                     >
                       <span className="w-1.5 h-1.5 bg-sky-600 rounded-full"></span>
                       {skill}
@@ -359,10 +406,10 @@ function App() {
         </div>
       </section>
 
-      {/* Contact Section */}
       <section
         id="contact"
-        className=" ref={contactRef} py-32 px-6 bg-stone-900 text-white"
+        ref={contactRef}
+        className="py-32 px-6 bg-stone-900 text-white"
       >
         <div className="max-w-4xl mx-auto text-center">
           <h2 className="text-5xl font-bold mb-6">Let's Work Together</h2>
@@ -393,7 +440,7 @@ function App() {
 
           <div className="flex justify-center gap-8 pt-8 border-t border-stone-700">
             <a
-              href="https://github.com/yourusername"
+              href="https://github.com/WJSchratt"
               target="_blank"
               rel="noopener noreferrer"
               className="text-stone-400 hover:text-sky-400 transition-colors"
@@ -418,10 +465,9 @@ function App() {
         </div>
       </section>
 
-      {/* Footer */}
       <footer className="bg-stone-950 text-stone-400 py-8 px-6">
         <div className="max-w-6xl mx-auto text-center text-sm">
-          <p>© 2024 Your Name. Built with React & Tailwind CSS.</p>
+          <p>© 2024 Walter Schratt. Built with React & Tailwind CSS.</p>
         </div>
       </footer>
     </div>
