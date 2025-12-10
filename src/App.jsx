@@ -12,8 +12,7 @@ import {
 function App() {
   const [activeSection, setActiveSection] = useState("home");
   const [isScrolled, setIsScrolled] = useState(false);
-  console.log('Current section:', activeSection);
-
+  console.log("Current section:", activeSection);
 
   const homeRef = useRef(null);
   const aboutRef = useRef(null);
@@ -21,19 +20,19 @@ function App() {
   const skillsRef = useRef(null);
   const contactRef = useRef(null);
 
-  const   navBarBackgroundColors = {
-    home:'bg-stone-500',
-    about: 'bg-stone-100',
-    projects: 'bg-stone-800',
-    skills: 'bg-blue-500',
-  }
+  const navBarBackgroundColors = {
+    home: "bg-stone-500",
+    about: "bg-stone-100",
+    projects: "bg-stone-100",
+    skills: "bg-blue-300",
+  };
 
-  const   navBarTextColors = {
-    home:'bg-stone-200',
-    about: 'bg-stone-800',
-    projects: 'bg-stone-800',
-    skills: 'bg-stone-500',
-  }
+  const navBarTextColors = {
+    home: "text-stone-200",
+    about: "text-stone-900",
+    projects: "text-stone-800",
+    skills: "text-stone-500",
+  };
 
   useEffect(() => {
     const handleScroll = () => {
@@ -45,31 +44,31 @@ function App() {
 
   useEffect(() => {
     const handleSectionChange = () => {
-      const scrollPosition = window.scrollY;  // Fixed typo
+      const scrollPosition = window.scrollY; // Fixed typo
       const navbarHeight = 80;
-      
+
       if (scrollPosition < aboutRef.current.offsetTop - navbarHeight) {
-        setActiveSection('home');
-      }
-      else if (scrollPosition < projectsRef.current.offsetTop - navbarHeight) {
-        setActiveSection('about');
-      }
-      else if (scrollPosition < skillsRef.current.offsetTop - navbarHeight) {
+        setActiveSection("home");
+      } else if (
+        scrollPosition <
+        projectsRef.current.offsetTop - navbarHeight
+      ) {
+        setActiveSection("about");
+      } else if (scrollPosition < skillsRef.current.offsetTop - navbarHeight) {
         setActiveSection("projects");
-      }
-      else {  // Fixed typo
+      } else {
+        // Fixed typo
         setActiveSection("skills");
       }
-
     };
-    
-    window.addEventListener('scroll', handleSectionChange);
-    
+
+    window.addEventListener("scroll", handleSectionChange);
+
     handleSectionChange();
-    
-    return () => window.removeEventListener('scroll', handleSectionChange);
-  }, []); 
-  
+
+    return () => window.removeEventListener("scroll", handleSectionChange);
+  }, []);
+
   const projects = [
     {
       title: "Unity Farming Simulator",
@@ -120,14 +119,18 @@ function App() {
           <div className="flex justify-between items-center">
             <a href="#home" className="text-2xl font-bold tracking-tight">
               <span className="text-sky-600">W</span>
-              <span className="text-stone-100">S</span>
+              <span
+                className={`text-stone-100" ${navBarTextColors[activeSection]}`}
+              >
+                S
+              </span>
             </a>
             <div className="flex gap-8">
               {["About", "Projects", "Skills", "Contact"].map((item) => (
                 <a
                   key={item}
                   href={`#${item.toLowerCase()}`}
-                  className="text-sm font-medium hover:text-sky-600 transition-colors"
+                  className={`text-sm font-medium hover:text-sky-600 transition-colors ${navBarTextColors[activeSection]}`}
                 >
                   {item}
                 </a>
@@ -151,8 +154,8 @@ function App() {
             </h1>
 
             <p className="text-xl font-bold text-stone-100 max-w-2xl leading-relaxed">
-              Building dynamic web applications and interactive game
-              experiences.
+              Building software solutions and web applications that solve
+              problems and connecting people is what I am all about.
             </p>
             <p className="text-xl font-bold text-sky-600 max-w-2xl leading-relaxed">
               I work with Front-end (React, JavaScript, Tailwind CSS) and
@@ -414,21 +417,20 @@ function App() {
         <div className="max-w-4xl mx-auto text-center">
           <h2 className="text-5xl font-bold mb-6">Let's Work Together</h2>
           <p className="text-xl text-stone-300 mb-12 leading-relaxed">
-            I'm currently seeking full-stack development opportunities,
-            especially with companies that value international perspectives and
-            modern web technologies.
+            I'm currently seeking full-stack development opportunities. Lets
+            work together!
           </p>
 
           <div className="flex flex-col sm:flex-row gap-4 justify-center mb-12">
             <a
-              href="mailto:your.email@example.com"
+              href="mailto:schrattwalterdev@gmail.com"
               className="bg-sky-600 text-white px-8 py-4 rounded-lg font-medium hover:bg-sky-700 transition-all inline-flex items-center justify-center gap-2"
             >
               <Mail className="w-5 h-5" />
               Send Email
             </a>
             <a
-              href="https://linkedin.com/in/yourprofile"
+              href="https://www.linkedin.com/in/walter-schratt/"
               target="_blank"
               rel="noopener noreferrer"
               className="border-2 border-white text-white px-8 py-4 rounded-lg font-medium hover:bg-white hover:text-stone-900 transition-all inline-flex items-center justify-center gap-2"
@@ -448,7 +450,7 @@ function App() {
               <Github className="w-6 h-6" />
             </a>
             <a
-              href="https://linkedin.com/in/yourprofile"
+              href="https://www.linkedin.com/in/walter-schratt/"
               target="_blank"
               rel="noopener noreferrer"
               className="text-stone-400 hover:text-sky-400 transition-colors"
@@ -456,7 +458,7 @@ function App() {
               <Linkedin className="w-6 h-6" />
             </a>
             <a
-              href="mailto:your.email@example.com"
+              href="mailto:schrattwalterdev@gmail.com"
               className="text-stone-400 hover:text-sky-400 transition-colors"
             >
               <Mail className="w-6 h-6" />
@@ -467,7 +469,7 @@ function App() {
 
       <footer className="bg-stone-950 text-stone-400 py-8 px-6">
         <div className="max-w-6xl mx-auto text-center text-sm">
-          <p>© 2024 Walter Schratt. Built with React & Tailwind CSS.</p>
+          <p>© 2025 Walter Schratt. Built with React & Tailwind CSS.</p>
         </div>
       </footer>
     </div>
