@@ -103,6 +103,23 @@ function App() {
     hasGame: true,  // Change this to true
     useWidget: false, // Add this
     },
+    {
+      title: "PIG Dice Game",
+      description:
+        "Super simple dice game to practice OOP and basic JS logic. NO AI and no styling, just the bare minimum to make it work.",
+      tech: ["JavaScript", "HTML5", "CSS3", "OOP", "DOM Manipulation"],
+      features: [
+        "Real-time game state updates",
+        "Instant winner detection at 50 points",
+        "user interface with form validation",
+      ],
+      link: "https://pig-tan.vercel.app",
+      github: "https://github.com/WJSchratt/Pig",
+      hasGame: true,
+      embedSrc: "https://pig-tan.vercel.app",
+      embedMessage: "Enter two player names and click New Game to start playing",
+      useWidget: false,
+    },
   ];
 
   const skills = {
@@ -340,7 +357,6 @@ function App() {
                       <div className="bg-stone-900 rounded-xl p-4">
                         <div className="flex items-center justify-between mb-3">
                           <p className="text-stone-100 font-semibold text-sm">
-                             Please use your arrow keys to navigate.
                           </p>
                           <a
                             href={project.link}
