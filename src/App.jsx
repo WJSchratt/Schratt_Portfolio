@@ -71,7 +71,7 @@ function App() {
     {
       title: "Unity Farming Simulator",
       description:
-        "A complete farming simulation game where players have 20 days to make as much money as possible by growing crops and selling to a merchant boat. Features multiple crop types with different growth rates, a dynamic day/night cycle, wild berry foraging, and strategic resource management.",
+        "Simple Farmign Simulator game made in Unity that took me way to long to make. No AI, C# scripting, WebGL build hosted on itch.io.",
       tech: ["Unity", "C#", "Game Development", "WebGL"],
       features: [
         "3 plantable crop types (pumpkins, carrots, strawberries) with unique growth cycles and values",
@@ -82,19 +82,26 @@ function App() {
         "Complete UI system with inventory and time management",
       ],
       link: "https://jschratt.itch.io/bobbefarming",
-      github: "#",
+      github: "https://github.com/17010856/F25-COP2671-0T1-17010856",
       hasGame: true,
-      useWidget: true, // Use itch.io's widget instead of iframe
+      useWidget: true, 
     },
     {
-      title: "Full-Stack Web Application",
-      description:
-        "Modern web application showcasing React frontend with Node.js backend integration.",
-      tech: ["React", "Node.js", "PostgreSQL", "Tailwind CSS"],
-      features: ["User authentication", "RESTful API", "Responsive design"],
-      link: "#",
-      github: "#",
-      hasGame: false,
+    title: "Bloc Jams Music Player",
+    description: "Revamped old music player React app, AI used for styling and code optimization.",
+    tech: ["React", "Vite", "Tailwind CSS", "JavaScript", "Responsive Design"],
+    features: [
+      "Dynamic album library with multiple collections",
+      "Real-time audio playback with progress tracking",
+      "Interactive song selection with visual feedback",
+      "Blue gradient progress bar showing current playback position",
+      "Previous/next track navigation",
+      "Responsive design for all screen sizes",
+    ],
+    link: "https://jams-new.vercel.app", 
+    github: "https://github.com/WJSchratt/JamsNew",
+    hasGame: true,  // Change this to true
+    useWidget: false, // Add this
     },
   ];
 
@@ -302,17 +309,17 @@ function App() {
       >
         <div className="max-w-6xl mx-auto">
           <h2 className="text-5xl font-bold mb-4 text-stone-900">
-            Featured Projects
+            Projects
           </h2>
           <p className="text-stone-600 mb-16 text-lg">
-            A selection of my recent work in web and game development
+           Here is some stuff I made
           </p>
 
           <div className="space-y-12">
             {projects.map((project, index) => (
               <div
                 key={index}
-                className="bg-stone-400 rounded-2xl border-2 hover:border-blue-700 p-8 transition-colors"
+                className="bg-stone-400 rounded-2xl border-2 p-8 transition-colors"
               >
                 <div className="p-8">
                   {/* Project Header */}
@@ -341,11 +348,10 @@ function App() {
                             rel="noopener noreferrer"
                             className="text-sky-400 hover:text-sky-300 text-sm flex items-center gap-1"
                           >
-                            Fullscreen <ExternalLink className="w-3 h-3" />
                           </a>
                         </div>
                         <iframe
-                          src="https://itch.io/embed-upload/15902536?color=333333"
+                          src={project.useWidget ? "https://itch.io/embed-upload/15902536?color=333333" : project.link}
                           width="100%"
                           height="620"
                           frameBorder="0"
@@ -353,7 +359,7 @@ function App() {
                           allowFullScreen
                           title={project.title}
                         >
-                          <a href={project.link}>Play {project.title} on itch.io</a>
+                          <a href={project.link}>Play {project.title} </a>
                         </iframe>
                       </div>
                     </div>
@@ -415,7 +421,7 @@ function App() {
                           className="flex items-center gap-2 text-sm font-medium text-stone-900 hover:text-sky-600 transition-colors"
                         >
                           <ExternalLink className="w-4 h-4" />
-                          {project.hasGame ? "Play on itch.io" : "Live Demo"}
+                          {project.hasGame ? "visit" : "Live Demo"}
                         </a>
                       </div>
                     </div>
