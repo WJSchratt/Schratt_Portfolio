@@ -184,10 +184,7 @@ function App() {
               Building software solutions and web applications that solve
               problems and connecting people is what I am all about.
             </p>
-            <p className="text-xl font-bold text-sky-600 max-w-2xl leading-relaxed">
-              I work with Front-end (React, JavaScript, Tailwind CSS) and
-              Back-end (Node.js, Python, RESTful APIs, SQL).
-            </p>
+        
 
             <div className="flex gap-4 pt-4">
               <a
@@ -487,7 +484,7 @@ function App() {
         <div className="max-w-4xl mx-auto text-center">
           <h2 className="text-5xl font-bold mb-6">Let's Work Together</h2>
           <p className="text-xl text-stone-300 mb-12 leading-relaxed">
-            I'm currently seeking full-stack development opportunities. Lets
+            I'm currently seeking opportunities. Lets
             work together!
           </p>
 
