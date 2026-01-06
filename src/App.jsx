@@ -36,12 +36,34 @@ function App() {
   };
 
   useEffect(() => {
+  if ("scrollRestoration" in window.history) {
+    window.history.scrollRestoration = "manual";
+  }
+  window.scrollTo(0, 0);
+}, []);
+
+
+  useEffect(() => {
     const handleScroll = () => {
       setIsScrolled(window.scrollY > 50);
     };
     window.addEventListener("scroll", handleScroll);
     return () => window.removeEventListener("scroll", handleScroll);
   }, []);
+
+  useEffect(() => {
+  if ("scrollRestoration" in window.history) {
+    window.history.scrollRestoration = "manual";
+  }
+
+  // remove hash BEFORE scrolling
+  if (window.location.hash) {
+    window.history.replaceState(null, "", window.location.pathname);
+  }
+
+  window.scrollTo(0, 0);
+}, []);
+
 
   useEffect(() => {
     const handleSectionChange = () => {
@@ -363,17 +385,15 @@ function App() {
                           >
                           </a>
                         </div>
-                        <iframe
-                          src={project.useWidget ? "https://itch.io/embed-upload/15902536?color=333333" : project.link}
-                          width="100%"
-                          height="620"
-                          frameBorder="0"
-                          className="rounded-lg"
-                          allowFullScreen
-                          title={project.title}
-                        >
-                          <a href={project.link}>Play {project.title} </a>
-                        </iframe>
+                          <div style={{ height: "600px", overflow: "hidden" }}>
+                          <iframe
+                            src="https://itch.io/embed-upload/15902536?color=333333"
+                            width="100%"
+                            height="600"
+                            frameBorder="0"
+                            loading="eager"
+                          />
+                          </div>
                       </div>
                     </div>
                   )}
