@@ -99,60 +99,61 @@ useEffect(() => {
 }, []);
 
   const projects = [
-    {
-      title: "Unity Farming Simulator",
-      description:
-        "Simple Farming Simulator game made in Unity that took me way too long to make. No AI, C# scripting, WebGL build hosted on itch.io.",
-      tech: ["Unity", "C#", "Game Development", "WebGL"],
-      features: [
-        "3 plantable crop types (pumpkins, carrots, strawberries) with unique growth cycles and values",
-        "Dynamic day/night cycle with time-based crop growth mechanics",
-        "Merchant boat NPC that arrives at specific times for trading",
-        "Wild berry foraging system with random spawning",
-        "20-day survival challenge with score tracking",
-        "Complete UI system with inventory and time management",
-      ],
-      link: "https://jschratt.itch.io/bobbefarming",
-      github: "https://github.com/17010856/F25-COP2671-0T1-17010856",
-      hasGame: true,
-      useWidget: true,
-    },
-    {
-      title: "Bloc Jams Music Player",
-      description:
-        "Revamped old music player React app, AI used for styling and code optimization.",
-      tech: ["React", "Vite", "Tailwind CSS", "JavaScript", "Responsive Design"],
-      features: [
-        "Dynamic album library with multiple collections",
-        "Real-time audio playback with progress tracking",
-        "Interactive song selection with visual feedback",
-        "Blue gradient progress bar showing current playback position",
-        "Previous/next track navigation",
-        "Responsive design for all screen sizes",
-      ],
-      link: "https://jams-new.vercel.app",
-      github: "https://github.com/WJSchratt/JamsNew",
-      hasGame: true,
-      useWidget: false,
-    },
-    {
-      title: "PIG Dice Game",
-      description:
-        "Super simple dice game to practice OOP and basic JS logic. NO AI and no styling, just the bare minimum to make it work.",
-      tech: ["JavaScript", "HTML5", "CSS3", "OOP", "DOM Manipulation"],
-      features: [
-        "Real-time game state updates",
-        "Instant winner detection at 50 points",
-        "User interface with form validation",
-      ],
-      link: "https://pig-tan.vercel.app",
-      github: "https://github.com/WJSchratt/Pig",
-     
-      embedSrc: "https://pig-tan.vercel.app",
-      embedMessage: "Enter two player names and click New Game to start playing",
-      useWidget: false,
-    },
-  ];
+  {
+    title: "Unity Farming Simulator",
+    description:
+      "Simple Farming Simulator game made in Unity that took me way too long to make. No AI, C# scripting, WebGL build hosted on itch.io.",
+    tech: ["Unity", "C#", "Game Development", "WebGL"],
+    features: [
+      "3 plantable crop types (pumpkins, carrots, strawberries) with unique growth cycles and values",
+      "Dynamic day/night cycle with time-based crop growth mechanics",
+      "Merchant boat NPC that arrives at specific times for trading",
+      "Wild berry foraging system with random spawning",
+      "20-day survival challenge with score tracking",
+      "Complete UI system with inventory and time management",
+    ],
+    link: "https://jschratt.itch.io/bobbefarming",
+    github: "https://github.com/17010856/F25-COP2671-0T1-17010856",
+    hasGame: true,
+    useWidget: true,
+  },
+  {
+    title: "Small Business Automation Demo",
+    description:
+      "Full-stack business automation solution integrating appointment scheduling, SMS notifications, and CRM workflows. Built with Make.com webhooks and Twilio API for seamless customer communication.",
+    tech: ["React", "Vite", "Tailwind CSS", "Make.com", "Twilio API", "Webhooks", "Automation"],
+    features: [
+      "Real-time appointment booking system with instant confirmation",
+      "Automated SMS notifications via Twilio for appointment reminders",
+      "Webhook integration with Make.com for workflow automation",
+      "Dynamic form validation and user feedback",
+      "Responsive design optimized for mobile and desktop",
+      "Scalable architecture for multi-location business operations",
+    ],
+    link: "https://demo-small-business.vercel.app/",
+    github: "https://github.com/WJSchratt/demo-small-business",
+    hasGame: true,
+    useWidget: false,
+  },
+  {
+    title: "Bloc Jams Music Player",
+    description:
+      "Revamped old music player React app, AI used for styling and code optimization.",
+    tech: ["React", "Vite", "Tailwind CSS", "JavaScript", "Responsive Design"],
+    features: [
+      "Dynamic album library with multiple collections",
+      "Real-time audio playback with progress tracking",
+      "Interactive song selection with visual feedback",
+      "Blue gradient progress bar showing current playback position",
+      "Previous/next track navigation",
+      "Responsive design for all screen sizes",
+    ],
+    link: "https://jams-new.vercel.app",
+    github: "https://github.com/WJSchratt/JamsNew",
+    hasGame: true,
+    useWidget: false,
+  },
+];
 
   const skills = {
     Frontend: [
